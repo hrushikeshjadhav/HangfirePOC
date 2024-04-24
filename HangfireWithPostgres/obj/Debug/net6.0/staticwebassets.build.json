@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "VriWmy6rYWDe8K8sC8x7f88F/5f5MRZs8copJUGJLtk=",
+  "Source": "HangfireWithPostgres",
+  "BasePath": "_content/HangfireWithPostgres",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
