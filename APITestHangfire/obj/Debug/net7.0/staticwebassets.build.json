@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "MKBZdJO1bGwIrjk48CLU+4ybl59ATDk5CVA6GgfE674=",
+  "Source": "APITestHangfire",
+  "BasePath": "_content/APITestHangfire",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

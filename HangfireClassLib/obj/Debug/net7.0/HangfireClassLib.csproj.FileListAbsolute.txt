@@ -1,0 +1,12 @@
+D:\Projects\HangfireWithPostgres\HangfireClassLib\bin\Debug\net7.0\HangfireClassLib.deps.json
+D:\Projects\HangfireWithPostgres\HangfireClassLib\bin\Debug\net7.0\HangfireClassLib.dll
+D:\Projects\HangfireWithPostgres\HangfireClassLib\bin\Debug\net7.0\HangfireClassLib.pdb
+D:\Projects\HangfireWithPostgres\HangfireClassLib\obj\Debug\net7.0\HangfireClassLib.csproj.AssemblyReference.cache
+D:\Projects\HangfireWithPostgres\HangfireClassLib\obj\Debug\net7.0\HangfireClassLib.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\HangfireWithPostgres\HangfireClassLib\obj\Debug\net7.0\HangfireClassLib.AssemblyInfoInputs.cache
+D:\Projects\HangfireWithPostgres\HangfireClassLib\obj\Debug\net7.0\HangfireClassLib.AssemblyInfo.cs
+D:\Projects\HangfireWithPostgres\HangfireClassLib\obj\Debug\net7.0\HangfireClassLib.csproj.CoreCompileInputs.cache
+D:\Projects\HangfireWithPostgres\HangfireClassLib\obj\Debug\net7.0\HangfireClassLib.dll
+D:\Projects\HangfireWithPostgres\HangfireClassLib\obj\Debug\net7.0\refint\HangfireClassLib.dll
+D:\Projects\HangfireWithPostgres\HangfireClassLib\obj\Debug\net7.0\HangfireClassLib.pdb
+D:\Projects\HangfireWithPostgres\HangfireClassLib\obj\Debug\net7.0\ref\HangfireClassLib.dll
