@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Hangfire;
+using Microsoft.AspNetCore.Mvc;
 using static HangfireConfiguration;
 
 namespace APITestHangfire
@@ -29,9 +30,9 @@ namespace APITestHangfire
             return Ok("success");
         }
         [HttpPost]
-        public ActionResult Recurring(string recType)
+        public ActionResult Recurring(string recType, DateTime dateTime)
         {
-            backgroundJobs.ScheduleRecurringJob(recType);
+            backgroundJobs.ScheduleRecurringJob(recType, dateTime);
             return Ok("success");
         }
         [HttpPost]
@@ -46,5 +47,6 @@ namespace APITestHangfire
             backgroundJobs.DeleteJob(JobID);
             return Ok("Job deleted with JobID " + JobID);
         }
+
     }
 }

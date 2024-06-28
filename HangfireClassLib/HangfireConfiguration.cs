@@ -30,15 +30,17 @@ public static class HangfireConfiguration
             BackgroundJob.Schedule("schedulejob", () => ExecuteJob(), dt);
         }
 
-        public void ScheduleRecurringJob(string recType)
+        public void ScheduleRecurringJob(string recType, DateTime dateTime)
         {
+            DateTime scheduleTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second); // Example: June 26, 2024, at 12:00 PM
+            string cronExpression = $"{scheduleTime.Minute} {scheduleTime.Hour} * * *";
             switch (recType.ToLower())
             {
                 case "Hourly":
                     RecurringJob.AddOrUpdate("recurring-hourly", () => ExecuteJob(), Cron.Hourly);
                     break;
                 case "daily":
-                    RecurringJob.AddOrUpdate("recurring-daily", () => ExecuteJob(), "0 17 * * *", TimeZoneInfo.Local);
+                    RecurringJob.AddOrUpdate("recurring-daily", () => ExecuteJob(), cronExpression, TimeZoneInfo.Local);
                     break;
                 case "weekly":
                     RecurringJob.AddOrUpdate("recurring-weekly", () => ExecuteJob(), Cron.Weekly);

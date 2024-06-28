@@ -29,7 +29,8 @@ public class Startup
         jobs.ScheduleJob(DateTime.Now);
 
         // Schedule a recurring job
-        jobs.ScheduleRecurringJob("recType");
+        DateTime dateTime= DateTime.Now;
+        jobs.ScheduleRecurringJob("recType", dateTime);
 
         // Create a continuation job
         jobs.ContinueJob();
@@ -37,5 +38,6 @@ public class Startup
         // Delete a job
         jobs.DeleteJob("your-job-id"); // Uncomment and replace with actual job ID to delete
 
+        GlobalJobFilters.Filters.Add(new AutomaticRetryAttribute { Attempts = 1 });
     }
 }
