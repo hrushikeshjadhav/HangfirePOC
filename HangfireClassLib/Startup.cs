@@ -1,4 +1,6 @@
-﻿using Hangfire;
+using Hangfire;
+using Hangfire.PostgreSql;
+using HangfireClassLib;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,25 +19,17 @@ public class Startup
 
         // Configure Hangfire with the connection string
         services.ConfigureHangfire(connectionString);
+        services.AddHangfire(x => x.UsePostgreSqlStorage(connectionString));
     }
 
     public void Configure(IApplicationBuilder app, IBackgroundJobClient backgroundJobs)
     {
-        app.UseHangfireDashboard();
-        app.UseHangfireServer();
+        
 
-        var jobs = new BackgroundJobs();
-        // Schedule a job
-        jobs.ScheduleJob(DateTime.Now);
+        // add the retry attempt
+        GlobalJobFilters.Filters.Add(new AutomaticRetryAttribute { Attempts = 1 });
 
-        // Schedule a recurring job
-        jobs.ScheduleRecurringJob("recType");
-
-        // Create a continuation job
-        jobs.ContinueJob();
-
-        // Delete a job
-        jobs.DeleteJob("your-job-id"); // Uncomment and replace with actual job ID to delete
-
+        // Add the custom job filter globally
+        GlobalJobFilters.Filters.Add(new TimeoutJobFilter(TimeSpan.FromMinutes(5)));
     }
 }
