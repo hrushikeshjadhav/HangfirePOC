@@ -1,10 +1,6 @@
-﻿using Hangfire;
-using Hangfire.Dashboard;
+using Hangfire;
 using Hangfire.PostgreSql;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Net;
-using System.Text;
 
 public static class HangfireConfiguration
 {
@@ -30,18 +26,20 @@ public static class HangfireConfiguration
             BackgroundJob.Schedule("schedulejob", () => ExecuteJob(), dt);
         }
 
-        public void ScheduleRecurringJob(string recType)
+        public void ScheduleRecurringJob(string jobName, string recType, DateTime date, TimeOnly time)
         {
+            DateTime scheduleTime = new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second); // Example: June 26, 2024, at 12:00 PM
+            string cronExpression = $"{scheduleTime.Minute} {scheduleTime.Hour} * * *";
             switch (recType.ToLower())
             {
-                case "Hourly":
-                    RecurringJob.AddOrUpdate("recurring-hourly", () => ExecuteJob(), Cron.Hourly);
+                case "hourly":
+                    RecurringJob.AddOrUpdate(jobName, () => ExecuteJob(), Cron.Hourly);
                     break;
                 case "daily":
-                    RecurringJob.AddOrUpdate("recurring-daily", () => ExecuteJob(), "0 17 * * *", TimeZoneInfo.Local);
+                    RecurringJob.AddOrUpdate(jobName, () => ExecuteJob(), cronExpression, TimeZoneInfo.Local);
                     break;
                 case "weekly":
-                    RecurringJob.AddOrUpdate("recurring-weekly", () => ExecuteJob(), Cron.Weekly);
+                    RecurringJob.AddOrUpdate(jobName, () => ExecuteJob(), Cron.Weekly());
                     break;
             }
         }
@@ -57,6 +55,4 @@ public static class HangfireConfiguration
             BackgroundJob.Delete(jobId);
         }
     }
-
-    
 }
