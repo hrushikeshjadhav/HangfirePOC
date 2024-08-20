@@ -70,9 +70,9 @@ namespace APITestHangfire
         }
 
         [HttpPost]
-        public ActionResult AfterJob()
+        public ActionResult AfterJob(string parentJobId)
         {
-            backgroundJobs.ContinueJob();
+            backgroundJobs.ContinueJob(parentJobId);
             return Ok("success");
         }
 
