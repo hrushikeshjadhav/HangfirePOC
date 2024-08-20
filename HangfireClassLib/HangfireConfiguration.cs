@@ -44,9 +44,8 @@ public static class HangfireConfiguration
             }
         }
 
-        public void ContinueJob()
+       public void ContinueJob(string parentJobId)
         {
-            var parentJobId = BackgroundJob.Enqueue(() => ExecuteJob());
             BackgroundJob.ContinueWith(parentJobId, () => ExecuteJob());
         }
 
